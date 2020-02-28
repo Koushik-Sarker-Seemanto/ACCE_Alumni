@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% extends 'HomeApp/base.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Alumni</title>
+    <link rel="favicon" href="{% static "images/favicon.png" %}">
+    {% endblock %}
+</head>
+
+<body>
+
+    {% block body%}
+
+    <div class="container">
+        <h1>Alumni Page</h1>
+        {% for people in all_people %}
+        <div class="col-md-4 list-group-item" >
+            <h3 class="list-group-item "><b>Name: {{ people.name }}, </b></h3>
+            <h3 class="list-group-item">Session: {{ people.session }}, </h3>
+            <h3 class="list-group-item">Current position: {{ people.current_position }}, </h3>
+            <h3 class="list-group-item">Contact No: {{ people.contact_no }}, </h3>
+            <h3 class="list-group-item">Email: {{ people.email }}, </h3>
+        </div>
+
+        {% endfor %}
+    </div>
+
+    {% endblock %}
+
+</body>
+
+</html>
