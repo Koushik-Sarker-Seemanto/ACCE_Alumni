@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% extends 'HomeApp/base.html' %}
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Batch-wise</title>
+    <link rel="favicon" href="{% static "images/favicon.png" %}">
+    {% endblock %}
+</head>
+
+<body>
+
+    {% block body%}
+
+    <div class="container">
+    <row>
+        <h1>Profile</h1>
+        <h1>Name: {{ people.name }}</h1>
+        <h1>Session: {{ people.session }}</h1>
+        <h1>Position: {{ people.current_position }}</h1>
+        <h1>Email: {{ people.email }}</h1>
+        <h1>Contact No: {{ people.contact_no }}</h1>
+        <h1>Address: {{ people.address }}</h1>
+
+    </row>
+
+    </div>
+
+    {% endblock %}
+
+</body>
+
+</html>

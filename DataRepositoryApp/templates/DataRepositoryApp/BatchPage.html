@@ -7,7 +7,7 @@
     <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
     <meta charset="UTF-8">
     {% block title %}
-    <title>Alumni</title>
+    <title>Batch-wise</title>
     <link rel="favicon" href="{% static "images/favicon.png" %}">
     {% endblock %}
 </head>
@@ -17,23 +17,11 @@
     {% block body%}
 
     <div class="container">
-
-    <div style="display: flex;justify-content: center">
-
-        <form style="width: 100%" class="form-inline" name="search_input_form" action="{% url 'DataRepositoryApp:search-result' %}" method="get">
-            {% csrf_token %}
-            <input name="search_field" id="search_field" class="form-control" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary" name="searchbtn" type="submit">Search</button>
-        </form>
-
-    </div>
-
-
     <row>
-        <h1>Alumni Page</h1>
+        <h1>Session({{ current_session }})</h1>
 
 
-        <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto" style="background: #FFFFFF">
+        <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto">
             <thead style="background: #1d91bd;color: #FFFFFF;">
               <tr>
                 <th>Name</th>
@@ -46,7 +34,7 @@
               {% for people in all_people %}
                 <tr>
                     <td><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;">{{ people.name }}</a></td>
-                    <td><a href="{% url 'DataRepositoryApp:get-session' people.session %}" style="color: #6E6E6E;">{{ people.session }}</a></td>
+                    <td>{{ people.session }}</td>
                     <td>{{ people.current_position }}</td>
                     <td><a style="color: #6E6E6E;">{{ people.contact_no }}</a></td>
                 </tr>

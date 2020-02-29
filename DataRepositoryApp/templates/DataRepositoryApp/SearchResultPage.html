@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% extends 'HomeApp/base.html' %}
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Batch-wise</title>
+    <link rel="favicon" href="{% static "images/favicon.png" %}">
+    {% endblock %}
+</head>
+
+<body>
+
+    {% block body%}
+
+    <div class="container">
+    <row>
+        <h1>Search Result For "{{ search_key }}"</h1>
+
+
+        {% if search_by_name.count == 0 and search_by_session.count == 0 and search_by_position.count == 0 %}
+
+            <h1 class="warning">No Result Found</h1>
+
+        {% else %}
+
+
+
+
+        {% if search_by_name%}
+
+            <h1>Search By Name</h1>
+        <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto">
+            <thead style="background: #1d91bd;color: #FFFFFF;">
+              <tr>
+                <th>Name</th>
+                <th>Session</th>
+                <th>Position</th>
+                <th>Contact No</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for people in search_by_name %}
+                <tr>
+                    <td><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;">{{ people.name }}</a></td>
+                    <td>{{ people.session }}</td>
+                    <td>{{ people.current_position }}</td>
+                    <td><a style="color: #6E6E6E;">{{ people.contact_no }}</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+
+            {% endif %}
+
+
+        {% if search_by_session%}
+
+            <h1>Search By Session</h1>
+        <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto">
+            <thead style="background: #1d91bd;color: #FFFFFF;">
+              <tr>
+                <th>Name</th>
+                <th>Session</th>
+                <th>Position</th>
+                <th>Contact No</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for people in search_by_session %}
+                <tr>
+                    <td><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;">{{ people.name }}</a></td>
+                    <td>{{ people.session }}</td>
+                    <td>{{ people.current_position }}</td>
+                    <td><a style="color: #6E6E6E;">{{ people.contact_no }}</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+
+        {% endif %}
+
+
+        {% if search_by_position %}
+
+            <h1>Search By Position</h1>
+        <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto">
+            <thead style="background: #1d91bd;color: #FFFFFF;">
+              <tr>
+                <th>Name</th>
+                <th>Session</th>
+                <th>Position</th>
+                <th>Contact No</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for people in search_by_position %}
+                <tr>
+                    <td><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;">{{ people.name }}</a></td>
+                    <td>{{ people.session }}</td>
+                    <td>{{ people.current_position }}</td>
+                    <td><a style="color: #6E6E6E;">{{ people.contact_no }}</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+
+
+        {% endif %}
+    {% endif %}
+
+
+
+    </row>
+    </div>
+
+    {% endblock %}
+
+</body>
+
+</html>
