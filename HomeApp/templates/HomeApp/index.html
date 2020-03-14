@@ -10,6 +10,18 @@ Author: Koushik Sarker Seemanto
   {% block title %}
   <title>Alumni</title>
   <link rel="favicon" href="{% static "images/favicon.png" %}">
+
+      <style>
+        .card {
+          {% comment %}box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);{% endcomment %}
+          transition: 0.3s;
+          width: 40%;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+      </style>
   {% endblock %}
 
 </head>
@@ -22,26 +34,45 @@ Author: Koushik Sarker Seemanto
   <header id="head">
     <div class="container">
       <div class="heading-text">
-        <h1 class="animated flipInY delay1">Start Online Education</h1>
-        <p>Free Online education template for elearning and online education institute.</p>
+        <h1 class="animated flipInY delay1">Welcome to DU ACCE Alumni Association</h1>
+        <p>This is a alumni site for hindu students of ACCE of Dhaka University.</p>
       </div>
 
       <div class="fluid_container">
         <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
-          <div data-thumb={% static "images/slides/img1.jpg" %} data-src="{% static "images/slides/img1.jpg" %}">
-            <h2>We develop.</h2>
-          </div>
-          <div data-thumb={% static "images/slides/img2.jpg" %} data-src={% static "images/slides/img2.jpg" %}>
-          </div>
-          <div data-thumb={% static "images/slides/img3.jpg" %} data-src={% static "images/slides/img3.jpg" %}>
-          </div>
+            {% if carousels.0.carousel_pic %}
+                <div data-thumb="{{ carousels.0.carousel_pic.url }}" data-src="{{ carousels.0.carousel_pic.url }}"></div>
+            {% else %}
+                <div data-thumb="{% static 'images/ImageTemporarilyUnavailable.jpg' %}" data-src="{% static 'images/ImageTemporarilyUnavailable.jpg' %}"></div>
+            {% endif %}
+
+            {% if carousels.1.carousel_pic %}
+                <div data-thumb="{{ carousels.1.carousel_pic.url }}" data-src="{{ carousels.1.carousel_pic.url }}"></div>
+            {% else %}
+                <div data-thumb="{% static 'images/ImageTemporarilyUnavailable.jpg' %}" data-src="{% static 'images/ImageTemporarilyUnavailable.jpg' %}"></div>
+            {% endif %}
+
+            {% if carousels.2.carousel_pic %}
+                <div data-thumb="{{ carousels.2.carousel_pic.url }}" data-src="{{ carousels.2.carousel_pic.url }}"></div>
+            {% else %}
+                <div data-thumb="{% static 'images/ImageTemporarilyUnavailable.jpg' %}" data-src="{% static 'images/ImageTemporarilyUnavailable.jpg' %}"></div>
+            {% endif %}
+
+            {% comment %}<div data-thumb="{% static 'images/slides/img1.jpg' %}" data-src="{% static 'images/slides/img1.jpg' %}">
+                <h2>We develop.</h2>
+            </div>
+            <div data-thumb="{% static 'images/slides/img2.jpg' %}" data-src="{% static 'images/slides/img2.jpg' %}">
+            </div>
+            <div data-thumb="{% static 'images/slides/img3.jpg' %}" data-src="{% static 'images/slides/img3.jpg' %}">
+            </div>{% endcomment %}
+
         </div><!-- #camera_wrap_3 -->
       </div><!-- .fluid_container -->
     </div>
   </header>
   <!-- /Header -->
 
-  <div class="container">
+  {% comment %}<div class="container">
     <div class="row">
       <div class="col-md-3">
         <div class="grey-box-icon">
@@ -102,10 +133,55 @@ Author: Koushik Sarker Seemanto
       </div>
       <!--/span3-->
     </div>
+  </div>{% endcomment %}
+
+
+  <section class="container">
+
+  <h1 style="display: flex;justify-content: center;margin-bottom: 2%">Upcoming Events</h1>
+
+  <div class="mySlickClass" >
+      {% for event in events %}
+      <div>
+          <div class="card col-md-11 col-xs-11">
+              {% if event.notice_pic %}
+              <img src="{{ event.notice_pic.url }}" alt="Avatar" style="width:100%">
+              {% else %}
+              <img src="{% static 'images/ImageTemporarilyUnavailable 640X640.jpg' %}" alt="Avatar" style="width:100%">
+              {% endif %}
+
+              <h4><b>{{ event.title }}</b></h4>
+          <hr style="border: 1px solid #1fcdff;">
+              <p class="" style="overflow: hidden;text-overflow: ellipsis;line-height: 16px;
+                    max-height: 64px;-webkit-box-orient: vertical">{{ event.description }}</p>
+              <p>Posted: {{ event.created_at }}</p>
+
+          <a> Read More...</a>
+          </div>
+      </div>
+
+
+      {% endfor %}
+      {% comment %}<div>
+          <div class="card col-md-12 col-xs-12">
+              <img src="{% static 'images/nobody_m.original.jpg' %}" alt="Avatar" style="width:100%">
+              <div class="container">
+                <h4><b>John Doe 2</b></h4>
+                <p>Architect & Engineer</p>
+              </div>
+          </div>
+      </div>{% endcomment %}
+
   </div>
+
+  </section>
+
+
+
   <section class="news-box top-margin">
     <div class="container">
       <h2><span>New Courses</span></h2>
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
       <div class="row">
 
         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -214,9 +290,79 @@ Author: Koushik Sarker Seemanto
 
 
   <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
   <script src={% static "js/modernizr-latest.js" %}></script>
   <script type='text/javascript' src={% static 'js/jquery.min.js' %}></script>
   <script type='text/javascript' src={% static 'js/fancybox/jquery.fancybox.pack.js' %}></script>
+  <script type='text/javascript' src={% static 'js/slick.min.js' %}></script>
+
+
+  <script type="text/javascript">
+    $('.mySlickClass').slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
+
+    $('.centerSlick').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+
+  </script>
 
   <script type='text/javascript' src={% static 'js/jquery.mobile.customized.min.js' %}></script>
   <script type='text/javascript' src={% static 'js/jquery.easing.1.3.js' %}></script>

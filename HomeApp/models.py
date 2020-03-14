@@ -43,27 +43,29 @@ class Notice(models.Model):
 
 class Carousel(models.Model):
     title = models.CharField(max_length=100, default='', blank=True)
-    description = models.CharField(max_length=500, default='', blank=True)
-    carousel_pic = models.ImageField(default='',blank=True, null=True)
+    carousel_pic = models.ImageField(default='', blank=True, null=True)
     created_at = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return str(self.id) + '. ' + self.title
 
     def save(self):
         # Opening the uploaded image
-        if self.carousel_pic:
-            im = Image.open(self.carousel_pic)
-
-            output = BytesIO()
-
-            # Resize/modify the image
-            im = im.resize((640, 640))
-
-            # after modifications, save it to the output
-            im.save(output, format='JPEG', quality=60)
-            output.seek(0)
-
-            # change the imagefield value to be the newley modifed image value
-            self.carousel_pic = InMemoryUploadedFile(
-                output, 'ImageField', "%s.jpg" % self.carousel_pic.name.split('.')[0],
-                'image/jpeg', sys.getsizeof(output), None)
+        # if self.carousel_pic:
+        #     im = Image.open(self.carousel_pic)
+        #
+        #     output = BytesIO()
+        #
+        #     # Resize/modify the image
+        #     im = im.resize((640, 640))
+        #
+        #     # after modifications, save it to the output
+        #     im.save(output, format='JPEG', quality=60)
+        #     output.seek(0)
+        #
+        #     # change the imagefield value to be the newley modifed image value
+        #     self.carousel_pic = InMemoryUploadedFile(
+        #         output, 'ImageField', "%s.jpg" % self.carousel_pic.name.split('.')[0],
+        #         'image/jpeg', sys.getsizeof(output), None)
 
         super(Carousel, self).save()
