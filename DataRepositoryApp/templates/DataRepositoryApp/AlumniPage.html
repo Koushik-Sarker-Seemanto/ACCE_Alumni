@@ -18,10 +18,9 @@
 
   <div class="container">
 
-    <div style="display: flex;justify-content: center">
+    <div style="display: flex;justify-content: center;width: 100%">
 
-      <form style="width: 100%" class="form-inline" name="search_input_form"
-        action="{% url 'DataRepositoryApp:search-result' %}" method="get">
+      <form style="margin-top: 3%;width: inherit" class="form-inline" name="search_input_form" action="{% url 'DataRepositoryApp:search-result' %}" method="get">
         {% csrf_token %}
         <input name="search_field" id="search_field" class="form-control" type="text" placeholder="Search"
           aria-label="Search">

@@ -72,70 +72,7 @@ Author: Koushik Sarker Seemanto
   </header>
   <!-- /Header -->
 
-  {% comment %}<div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="grey-box-icon">
-          <div class="icon-box-top grey-box-icon-pos">
-            <img src={% static "images/1.png" %} alt="" />
-          </div>
-          <!--icon box top -->
-          <h4>Online Courses</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
-            eset nec lacus elit dor broma.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus
-            eleifend risus ut congue
-            eset nec lacus elit dor broma.</p>
-          <p><a href="#"><em>Read More</em></a></p>
-        </div>
-        <!--grey box -->
-      </div>
-      <!--/span3-->
-      <div class="col-md-3">
-        <div class="grey-box-icon">
-          <div class="icon-box-top grey-box-icon-pos">
-            <img src={% static "images/2.png" %} alt="" />
-          </div>
-          <!--icon box top -->
-          <h4>Meet our Staff</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
-            eset nec lacus elit dor broma.</p>
-          <p><a href="#"><em>Read More</em></a></p>
-        </div>
-        <!--grey box -->
-      </div>
-      <!--/span3-->
-      <div class="col-md-3">
-        <div class="grey-box-icon">
-          <div class="icon-box-top grey-box-icon-pos">
-            <img src={% static "images/3.png" %} alt="" />
-          </div>
-          <!--icon box top -->
-          <h4>Latest Updates</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
-            eset nec lacus elit dor broma.</p>
-          <p><a href="#"><em>Read More</em></a></p>
-        </div>
-        <!--grey box -->
-      </div>
-      <!--/span3-->
-      <div class="col-md-3">
-        <div class="grey-box-icon">
-          <div class="icon-box-top grey-box-icon-pos">
-            <img src={% static "images/4.png" %} alt="" />
-          </div>
-          <!--icon box top -->
-          <h4>Placements</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
-            eset nec lacus elit dor broma.</p>
-          <p><a href="#"><em>Read More →</em></a></p>
-        </div>
-        <!--grey box -->
-      </div>
-      <!--/span3-->
-    </div>
-  </div>{% endcomment %}
-
-
+<div>
   <section class="container">
 
   <h1 style="display: flex;justify-content: center;margin-bottom: 2%">Upcoming Events</h1>
@@ -143,7 +80,7 @@ Author: Koushik Sarker Seemanto
   <div class="mySlickClass" >
       {% for event in events %}
       <div>
-          <div class="card col-md-11 col-xs-11">
+          <div class="card col-md-12 col-xs-12">
               {% if event.notice_pic %}
               <img src="{{ event.notice_pic.url }}" alt="Avatar" style="width:100%">
               {% else %}
@@ -156,29 +93,18 @@ Author: Koushik Sarker Seemanto
                     max-height: 64px;-webkit-box-orient: vertical">{{ event.description }}</p>
               <p>Posted: {{ event.created_at }}</p>
 
-          <a> Read More...</a>
+          <a href="{% url 'HomeApp:upcoming-event' event.pk %}">Read More</a>
           </div>
       </div>
 
-
       {% endfor %}
-      {% comment %}<div>
-          <div class="card col-md-12 col-xs-12">
-              <img src="{% static 'images/nobody_m.original.jpg' %}" alt="Avatar" style="width:100%">
-              <div class="container">
-                <h4><b>John Doe 2</b></h4>
-                <p>Architect & Engineer</p>
-              </div>
-          </div>
-      </div>{% endcomment %}
 
   </div>
-
   </section>
 
 
 
-  <section class="news-box top-margin">
+  {% comment %}<section class="news-box top-margin">
     <div class="container">
       <h2><span>New Courses</span></h2>
         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -240,7 +166,7 @@ Author: Koushik Sarker Seemanto
         </div>
       </div>
     </div>
-  </section>
+  </section>{% endcomment %}
 
 
 
@@ -262,22 +188,14 @@ Author: Koushik Sarker Seemanto
 
       <div class="col-md-4">
         <div class="title-box clearfix ">
-          <h2 class="title-box_primary">Up Coming Courses</h2>
+          <h2 class="title-box_primary">Usefull Links</h2>
         </div>
         <div class="list styled custom-list">
           <ul>
-            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus."
-                href="#">Mathematics and Computer Science</a></li>
-            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus."
-                href="#">Mathematics and Philosophy</a></li>
-            <li><a title="Penatibus et magnis dis parturient montes ascetur ridiculus mus." href="#">Philosophy and
-                Modern Languages</a></li>
-            <li><a title="Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci."
-                href="#">History (Ancient and Modern)</a></li>
-            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Classical
-                Archaeology and Ancient History</a></li>
-            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Physics
-                and Philosophy</a></li>
+            <li><a target="_blank" href="https://www.du.ac.bd/">University of Dhaka</a></li>
+            <li><a target="_blank" href="https://www.du.ac.bd/academic/department_item/ACT">Department of Applied Chemistry & Chemical Engineering</a></li>
+            <li><a target="_blank" href="http://acschapterdu.org">ACS Student Chapter</a></li>
+            <li><a target="_blank" href="https://duaa-bd.org/">DU Alumni Association</a></li>
           </ul>
         </div>
       </div>
@@ -302,10 +220,12 @@ Author: Koushik Sarker Seemanto
   <script type="text/javascript">
     $('.mySlickClass').slick({
       dots: true,
-      infinite: false,
+      infinite: true,
       speed: 300,
       slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
       responsive: [
         {
           breakpoint: 1024,
@@ -333,32 +253,6 @@ Author: Koushik Sarker Seemanto
         // You can unslick at a given breakpoint now by adding:
         // settings: "unslick"
         // instead of a settings object
-      ]
-    });
-
-    $('.centerSlick').slick({
-      centerMode: true,
-      centerPadding: '60px',
-      slidesToShow: 3,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 3
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '40px',
-            slidesToShow: 1
-          }
-        }
       ]
     });
 
