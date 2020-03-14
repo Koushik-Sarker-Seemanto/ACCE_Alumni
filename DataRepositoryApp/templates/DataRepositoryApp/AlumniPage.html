@@ -2,73 +2,77 @@
 <html lang="en">
 
 <head>
-    {% extends 'HomeApp/base.html' %}
-    {% load static %}
-    <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
-    <meta charset="UTF-8">
-    {% block title %}
-    <title>Alumni</title>
-    <link rel="favicon" href="{% static "images/favicon.png" %}">
-    {% endblock %}
+  {% extends 'HomeApp/base.html' %}
+  {% load static %}
+  <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
+  <meta charset="UTF-8">
+  {% block title %}
+  <title>Alumni</title>
+  <link rel="favicon" href="{% static "images/favicon.png" %}">
+  {% endblock %}
 </head>
 
 <body>
 
-    {% block body%}
+  {% block body%}
 
-    <div class="container">
+  <div class="container">
 
     <div style="display: flex;justify-content: center">
 
-        <form style="width: 100%" class="form-inline" name="search_input_form" action="{% url 'DataRepositoryApp:search-result' %}" method="get">
-            {% csrf_token %}
-            <input name="search_field" id="search_field" class="form-control" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary" name="searchbtn" type="submit">Search</button>
-        </form>
+      <form style="width: 100%" class="form-inline" name="search_input_form"
+        action="{% url 'DataRepositoryApp:search-result' %}" method="get">
+        {% csrf_token %}
+        <input name="search_field" id="search_field" class="form-control" type="text" placeholder="Search"
+          aria-label="Search">
+        <button class="btn btn-primary" name="searchbtn" type="submit">Search</button>
+      </form>
 
     </div>
 
 
     <row>
-        <h1>Alumni Page</h1>
+      <h1>Alumni Page</h1>
 
 
-        <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto" style="background: #FFFFFF">
-            <thead style="background: #1d91bd;color: #FFFFFF;">
-              <tr>
-                <th>Name</th>
-                <th>Session</th>
-                <th>Position</th>
-                <th>Contact No</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for people in all_people %}
-                <tr>
-                    <td><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;">{{ people.name }}</a></td>
-                    <td><a href="{% url 'DataRepositoryApp:get-session' people.session %}" style="color: #6E6E6E;">{{ people.session }}</a></td>
-                    <td>{{ people.current_position }}</td>
-                    <td><a style="color: #6E6E6E;">{{ people.contact_no }}</a></td>
-                </tr>
-              {% endfor %}
-            </tbody>
-        </table>
+      <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto" style="background: #FFFFFF">
+        <thead style="background: #1d91bd;color: #FFFFFF;">
+          <tr>
+            <th>Name</th>
+            <th>Session</th>
+            <th>Position</th>
+            <th>Contact No</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for people in all_people %}
+          <tr>
+            <td><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}"
+                style="color: #6E6E6E;">{{ people.name }}</a></td>
+            <td><a href="{% url 'DataRepositoryApp:get-session' people.session %}"
+                style="color: #6E6E6E;">{{ people.session }}</a></td>
+            <td>{{ people.current_position }}</td>
+            <td><a style="color: #6E6E6E;">{{ people.contact_no }}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </row>
 
 
-{#        {% for people in all_people %}#}
-{#        <div class="col-md-4 list-group-item" >#}
-{#            <h3 class="list-group-item "><b>Name: {{ people.name }}, </b></h3>#}
-{#            <h3 class="list-group-item">Session: {{ people.session }}, </h3>#}
-{#            <h3 class="list-group-item">Current position: {{ people.current_position }}, </h3>#}
-{#            <h3 class="list-group-item">Contact No: {{ people.contact_no }}, </h3>#}
-{#            <h3 class="list-group-item">Email: {{ people.email }}, </h3>#}
-{#        </div>#}
-{##}
-{#        {% endfor %}#}
-    </div>
+    {#        {% for people in all_people %}#}
+    {#        <div class="col-md-4 list-group-item" >#}
+    {#            <h3 class="list-group-item "><b>Name: {{ people.name }}, </b></h3>#}
+    {#            <h3 class="list-group-item">Session: {{ people.session }}, </h3>#}
+    {#            <h3 class="list-group-item">Current position: {{ people.current_position }}, </h3>#}
+    {#            <h3 class="list-group-item">Contact No: {{ people.contact_no }}, </h3>#}
+    {#            <h3 class="list-group-item">Email: {{ people.email }}, </h3>#}
+    {#        </div>#}
+    {##}
+    {#        {% endfor %}#}
+  </div>
 
-    {% endblock %}
+  {% endblock %}
 
 </body>
 
