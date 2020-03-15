@@ -10,6 +10,9 @@
   <title>Alumni</title>
   <link rel="favicon" href="{% static "images/favicon.png" %}">
   {% endblock %}
+<style>
+}
+</style>
 </head>
 
 <body>
@@ -32,6 +35,33 @@
 
     <row>
       <h1>Alumni Page</h1>
+    <div class="row">
+
+        <div class="col-md-12">
+
+            {% for people in all_people %}
+                <div class="col-md-4 " style="background: #FFFFFF; padding: 1%; border: 5px solid #eeeeee">
+                    <div >
+
+                        <div class="col-md-6">
+                            {% if people.profile_picture %}
+                            <img alt="User Pic" src="{{ people.profile_picture.url }}" class="img-circle img-responsive">
+                            {% else %}
+                            <img alt="User Pic" src="{% static 'images/nobody_m.original.jpg' %}"
+                                class="img-circle img-responsive">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <p class="cardDetail" >{{ people.name }}</p>
+                            <p class="cardDetail">{{ people.session }}</p>
+                            <p class="cardDetail">{{ people.contact_no }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 
       <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto" style="background: #FFFFFF">
