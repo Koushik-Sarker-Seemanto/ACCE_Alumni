@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% extends 'HomeApp/base.html' %}
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Events</title>
+    <link rel="favicon" href="{% static "images/favicon.png" %}">
+    {% endblock %}
+</head>
+
+<body>
+    {% block body%}
+
+        <div class="container">
+        <div class="col-md-12" style="background: #FFFFFF;margin-top: 2%">
+
+            <div class="col-md-8">
+                <h1>Event Details</h1>
+                <div style="background: #FFFFFF;padding: 3%;">
+                    {% if current_event.notice_pic %}
+                      <img class="img-responsive" style="width: 100%;height: 350px" src="{{ current_event.notice_pic.url }}" alt="Avatar">
+                      {% else %}
+                      <img style="width: 100%;height: 350px" src="{% static 'images/ImageTemporarilyUnavailable 640X640.jpg' %}" alt="Avatar">
+                    {% endif %}
+                    <h1>{{ current_event.title }}</h1>
+                    <p>{{ current_event.description }}</p>
+                </div>
+            </div>
+
+            <div class="col-md-4" style="background: #FFFFFF;padding: 3%">
+                <h1>Events</h1>
+                {% for event in events %}
+
+                    {% comment %}{% if event.notice_pic %}
+                      <img width="100%" src="{{ event.notice_pic.url }}" alt="Avatar" style="width:100%">
+                      {% else %}
+                      <img src="{% static 'images/ImageTemporarilyUnavailable 640X640.jpg' %}" alt="Avatar" style="width:100%">
+                    {% endif %}{% endcomment %}
+                    <h3>{{ event.title }}</h3>
+                    <p style="overflow: hidden;text-overflow: ellipsis;line-height: 16px;
+                    max-height: 48px;-webkit-box-orient: vertical">{{ event.description }}</p>
+                    <a href="{% url 'HomeApp:upcoming-event' event.pk %}">Read More</a>
+                {% endfor %}
+            </div>
+        </div>
+
+        </div>
+
+
+    {% endblock %}
+
+</body>
+
+</html>

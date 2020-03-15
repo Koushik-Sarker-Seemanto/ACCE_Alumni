@@ -69,3 +69,38 @@ class Carousel(models.Model):
         #         'image/jpeg', sys.getsizeof(output), None)
 
         super(Carousel, self).save()
+
+
+class Gallery(models.Model):
+    event = models.ForeignKey(Notice, on_delete=models.CASCADE)
+    image_field = models.ImageField(default='', blank=True, null=True)
+    created_at = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return self.event.title + ' - ' + str(self.image_field)
+
+    def save(self):
+        # Opening the uploaded image
+        if self.image_field:
+            im = Image.open(self.image_field)
+
+            output = BytesIO()
+
+            width, height = im.size
+
+            ratio = width/height
+
+
+            # Resize/modify the image
+            im = im.resize((480, 480))
+
+            # after modifications, save it to the output
+            im.save(output, format='JPEG', quality=60)
+            output.seek(0)
+
+            # change the imagefield value to be the newley modifed image value
+            self.image_field = InMemoryUploadedFile(
+                output, 'ImageField', "%s.jpg" % self.image_field.name.split('.')[0],
+                'image/jpeg', sys.getsizeof(output), None)
+
+        super(Gallery, self).save()

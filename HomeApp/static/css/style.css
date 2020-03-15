@@ -1019,3 +1019,16 @@ list-style: none;
 	font-weight: bold;
   color: #0000FF;
 }
+
+.Shadow{
+	-webkit-box-shadow: 0px 0px 8px 5px rgba(0,0,0,0.18);
+	-moz-box-shadow: 0px 0px 8px 5px rgba(0,0,0,0.18);
+	box-shadow: 0px 0px 8px 5px rgba(0,0,0,0.18);
+	cursor: pointer;
+}
+
+.ShadowBlackSide{
+	-webkit-box-shadow: 5px 4px 8px 0px rgba(238,238,238,1);
+	-moz-box-shadow: 5px 4px 8px 0px rgba(238,238,238,1);
+	box-shadow: 5px 4px 8px 0px rgba(238,238,238,1);
+}
