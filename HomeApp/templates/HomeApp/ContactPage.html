@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% extends 'HomeApp/base.html' %}
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Contact</title>
+    <link rel="favicon" href="{% static "images/favicon.png" %}">
+    {% endblock %}
+</head>
+
+<body>
+
+    {% block body%}
+
+        <div class="container" style="background: #FFFFFF;margin-top: 2%">
+            <div class="row">
+                <h1 style="display: flex; justify-content: center">Contact</h1>
+
+            </div>
+        </div>
+
+    {% endblock %}
+
+</body>
+
+</html>

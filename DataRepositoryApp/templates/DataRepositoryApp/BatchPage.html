@@ -7,7 +7,7 @@
   <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
   <meta charset="UTF-8">
   {% block title %}
-  <title>Batch-wise</title>
+  <title>Session {{ current_session }}</title>
   <link rel="favicon" href="{% static "images/favicon.png" %}">
   {% endblock %}
 </head>
@@ -17,10 +17,36 @@
   {% block body%}
 
   <div class="container">
-    <row>
-      <h1>Session({{ current_session }})</h1>
 
+        <div class="col-md-12">
+        <h2 style="display: flex;justify-content: center;background: #FFFFFF;padding: 1%">Session {{ current_session }}</h2>
+            {% for people in all_people %}
+                <div class="col-md-4 " style="background: #FFFFFF; padding: 1%; border: 5px solid #eeeeee">
+                    <div >
 
+                        <div class="col-md-6">
+                            {% if people.profile_picture %}
+                            <a href="{% url 'DataRepositoryApp:get-profile' people.pk %}">
+                                <img style="cursor: pointer" alt="User Pic" src="{{ people.profile_picture.url }}" class="img-circle img-responsive">
+                            </a>
+                            {% else %}
+                            <a href="{% url 'DataRepositoryApp:get-profile' people.pk %}">
+                                <img alt="User Pic" src="{% static 'images/nobody_m.original.jpg' %}" class="img-circle img-responsive">
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;" class="cardDetail" >{{ people.name }}</a>
+                            <p style="color: #6E6E6E;" class="cardDetail">{{ people.current_position }}</p>
+                            <p style="color: #6E6E6E;" class="cardDetail">{{ people.contact_no }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+{% comment %}
       <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto">
         <thead style="background: #1d91bd;color: #FFFFFF;">
           <tr>
@@ -41,8 +67,7 @@
           </tr>
           {% endfor %}
         </tbody>
-      </table>
-    </row>
+      </table>{% endcomment %}
 
 
     {#        {% for people in all_people %}#}

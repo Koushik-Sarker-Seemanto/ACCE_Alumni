@@ -7,10 +7,18 @@ from DataRepositoryApp.models import Alumni
 
 
 def get_all_alumni(request):
-    all_people = Alumni.objects.all().order_by('-session')
-
+    list_of_people = []
+    session_list = []
+    for i in range(2020, 1972, -1):
+        session = str(i)+'-'+str((i+1) % 1000)
+        session_list.append(session)
+        session_wise = Alumni.objects.filter(session__icontains=str(i))
+        list_of_people.append((session, session_wise))
+    # print(list_of_people)
+    # print(session_list)
     context = {
-        'all_people': all_people
+        'list_of_people': list_of_people,
+        'session_list': session_list,
     }
     return render(request, 'DataRepositoryApp/AlumniPage.html', context)
 

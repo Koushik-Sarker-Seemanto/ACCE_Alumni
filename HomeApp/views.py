@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from django.shortcuts import redirect, render, HttpResponse
-from  .models import Carousel, Notice, Gallery
+from .models import Carousel, Notice, Gallery
 # Create your views here.
 
 
@@ -9,7 +9,8 @@ def index_view(request):
     carousels = Carousel.objects.all().order_by('-created_at')[:3]
     events = Notice.objects.all().order_by('-created_at')[:5]
     carousels = list(carousels)
-    print(carousels)
+    # print(carousels)
+
     context = {
         "carousels": carousels,
         "events": events,
@@ -43,3 +44,15 @@ def gallery_view(request):
         "list_of_event": list_of_event,
     }
     return render(request, 'HomeApp/GalleryPage.html', context)
+
+
+def about_us_view(request):
+    context = {
+
+    }
+    return render(request, 'HomeApp/AboutPage.html', context)
+
+
+def contact_view(request):
+    return render(request, 'HomeApp/ContactPage.html')
+

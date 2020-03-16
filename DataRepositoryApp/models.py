@@ -11,9 +11,28 @@ import sys
 from django.forms import CharField
 
 
+# _sessions = (
+#     ('2005-06', '2005-06'),
+#     ('2006-07', '2006-07'),
+#     ('2007-08', '2007-08'),
+#     ('2008-09', '2008-09'),
+#     ('2009-10', '2009-10'),
+#     ('2010-11', '2010-11'),
+#     ('2011-12', '2011-12'),
+#     ('2012-13', '2012-13'),
+#     ('2013-14', '2013-14'),
+#     ('2014-15', '2014-15'),
+#     ('2015-16', '2015-16'),
+#     ('2016-17', '2016-17'),
+#     ('2017-18', '2017-18'),
+#     ('2018-19', '2018-19'),
+#     ('2019-20', '2019-20'),
+# )
+
+
 class Alumni(models.Model):
     name = models.CharField(max_length=100, default='', blank=True)
-    session = models.CharField(max_length=10, default='', blank=True)
+    session = models.CharField(max_length=7, default='', blank=True)
     current_position = models.CharField(max_length=50, default='', blank=True)
     address = models.CharField(max_length=200, default='', blank=True)
     contact_no = models.CharField(max_length=20, default='', blank=True)

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href={% static "css/alumni_style.css" %}>
     <meta charset="UTF-8">
     {% block title %}
-    <title>Events</title>
+    <title>Event: {{ current_event.title }}</title>
     <link rel="favicon" href="{% static "images/favicon.png" %}">
     {% endblock %}
 </head>
@@ -40,7 +40,7 @@
                       {% else %}
                       <img src="{% static 'images/ImageTemporarilyUnavailable 640X640.jpg' %}" alt="Avatar" style="width:100%">
                     {% endif %}{% endcomment %}
-                    <h3>{{ event.title }}</h3>
+                    <h3><a href="{% url 'HomeApp:upcoming-event' event.pk %}">{{ event.title }}</a></h3>
                     <p style="overflow: hidden;text-overflow: ellipsis;line-height: 16px;
                     max-height: 48px;-webkit-box-orient: vertical">{{ event.description }}</p>
                     <a href="{% url 'HomeApp:upcoming-event' event.pk %}">Read More</a>

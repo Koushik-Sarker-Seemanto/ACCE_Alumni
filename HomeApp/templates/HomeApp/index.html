@@ -8,7 +8,7 @@ Author: Koushik Sarker Seemanto
   {% extends 'HomeApp/base.html' %}
   {% load  static %}
   {% block title %}
-  <title>Alumni</title>
+  <title>Home</title>
   <link rel="favicon" href="{% static "images/favicon.png" %}">
 
       <style>
@@ -82,9 +82,13 @@ Author: Koushik Sarker Seemanto
       <div>
           <div class="card col-md-12 col-xs-12">
               {% if event.notice_pic %}
-              <img src="{{ event.notice_pic.url }}" alt="Avatar" style="width:100%">
+              <a href="{% url 'HomeApp:upcoming-event' event.pk %}">
+                  <img src="{{ event.notice_pic.url }}" alt="Avatar" style="cursor: pointer;width:100%">
+              </a>
               {% else %}
-              <img src="{% static 'images/ImageTemporarilyUnavailable 640X640.jpg' %}" alt="Avatar" style="width:100%">
+              <a href="{% url 'HomeApp:upcoming-event' event.pk %}">
+                <img src="{% static 'images/ImageTemporarilyUnavailable 640X640.jpg' %}" alt="Avatar" style="width:100%">
+              </a>
               {% endif %}
 
               <h4><b>{{ event.title }}</b></h4>
@@ -182,7 +186,7 @@ Author: Koushik Sarker Seemanto
           ascetur ridiculus mus. Null dui. Fusce feugiat malesuada odio.</p>
         <p>Lorem ipsumulum aenean noummy endrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes
           ascetur ridiculus mus. Null dui. Fusce feugiat malesuada odio.</p>
-        <a href="#" title="read more" class="btn-inline " target="_self">read more</a>
+        <a href="{% url 'HomeApp:aboutus-view' %}" title="read more" class="btn-inline " target="_self">read more</a>
       </div>
 
 
@@ -204,87 +208,7 @@ Author: Koushik Sarker Seemanto
 
   {% endblock %}
 
-  {% block script %}
 
-
-  <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-  <script src={% static "js/modernizr-latest.js" %}></script>
-  <script type='text/javascript' src={% static 'js/jquery.min.js' %}></script>
-  <script type='text/javascript' src={% static 'js/fancybox/jquery.fancybox.pack.js' %}></script>
-  <script type='text/javascript' src={% static 'js/slick.min.js' %}></script>
-
-
-  <script type="text/javascript">
-    $('.mySlickClass').slick({
-      dots: true,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
-      ]
-    });
-
-  </script>
-
-  <script type='text/javascript' src={% static 'js/jquery.mobile.customized.min.js' %}></script>
-  <script type='text/javascript' src={% static 'js/jquery.easing.1.3.js' %}></script>
-  <script type='text/javascript' src={% static 'js/camera.min.js' %}></script>
-  <script src={% static "js/bootstrap.min.js" %}></script>
-  <script src={% static "js/custom.js" %}></script>
-  <script>
-    jQuery(function () {
-
-      jQuery('#camera_wrap_4').camera({
-        transPeriod: 500,
-        time: 3000,
-        height: '600',
-        loader: 'false',
-        pagination: true,
-        thumbnails: false,
-        hover: false,
-        playPause: false,
-        navigation: false,
-        opacityOnGrid: false,
-        imagePath: 'images/'
-      });
-
-    });
-
-  </script>
-
-  {% endblock %}
 </body>
 
 </html>
