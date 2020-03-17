@@ -74,6 +74,7 @@ class Carousel(models.Model):
 class Gallery(models.Model):
     event = models.ForeignKey(Notice, on_delete=models.CASCADE)
     image_field = models.ImageField(default='', blank=True, null=True)
+    image_name = models.CharField(max_length=100, default='', blank=True)
     created_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
@@ -100,7 +101,7 @@ class Gallery(models.Model):
 
             # change the imagefield value to be the newley modifed image value
             self.image_field = InMemoryUploadedFile(
-                output, 'ImageField', "%s.jpg" % self.image_field.name.split('.')[0],
+                output, 'ImageField', "%s.jpg" % self.image_name,
                 'image/jpeg', sys.getsizeof(output), None)
 
         super(Gallery, self).save()
