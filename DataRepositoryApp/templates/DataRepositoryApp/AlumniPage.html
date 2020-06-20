@@ -15,127 +15,102 @@
 
 <body>
 
-  {% block body%}
+{% block body%}
 
 <div class="container">
 
-    <div class="row">
-        <div class="col-md-12" style="display: flex;justify-content: center;width: 100%">
-          <form style="margin-top: 2%;width: 100%" class="form-inline" name="search_input_form" action="{% url 'DataRepositoryApp:search-result' %}" method="get">
-            {% csrf_token %}
-            <input name="search_field" id="search_field" class="form-control" type="text" placeholder="Search"
-              aria-label="Search">
-            <button class="btn btn-primary" name="searchbtn" type="submit">Search</button>
-          </form>
+    <div class="">
+        <div style="display: block; text-align: center">
+            <form style="margin-top: 2%;" class="form-inline" name="search_input_form" action="{% url 'DataRepositoryApp:search-result' %}" method="get">
+                {% csrf_token %}
+                <input name="search_field" style="margin-top: 0;height: 40px;display: inline-block !important; width: 50%!important" id="search_field" class="form-control" type="text" placeholder="Search"/>
+                <button class="btn btn-primary" style="margin-top: 0; height: 40px;padding-left: 20px;padding-right: 20px;" name="searchbtn" type="submit"><i style="font-size: 12pt" class="fa fa-search"></i></button>
+            </form>
         </div>
     </div>
 
-    <div class="container" style="margin-top: 1%">
-            <div class="row">
-                <h1 style="display: flex; justify-content: center">Alumni List</h1>
-                {% for i in session_list %}
-                    <div class="col-md-12">
-                        {% for session_wise in list_of_people %}
-                            {% if session_wise.0 == i and session_wise.1 %}
-                                <h2 style="background: #FFFFFF;padding: 1%"><a style="color: #6E6E6E" href="{% url 'DataRepositoryApp:get-session' session_wise.0 %}">Session: {{ session_wise.0 }}</a></h2>
-                                {% for individual_people in session_wise.1 %}
-
-                                    <div class="col-md-4 " style="background: #FFFFFF; padding: 1%; border: 5px solid #eeeeee; place-content: center">
-
-
-                                            <div class="col-md-6">
-                                                {% if individual_people.profile_picture %}
-                                                <a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}">
-                                                    <img style="cursor: pointer" alt="User Pic" src="{{ individual_people.profile_picture.url }}" class="img-responsive">
-                                                </a>
-                                                {% else %}
-                                                <a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}">
-                                                    <img alt="User Pic" src="{% static 'images/nobody_m.original.jpg' %}" class="img-responsive">
-                                                </a>
-                                                {% endif %}
-                                            </div>
-                                            <div class="col-md-6">
-
-                                                <a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}" style="color: #6E6E6E;" class="cardDetail" >{{ individual_people.name }}</a>
-                                                <p style="color: #6E6E6E;" class="cardDetail">{{ individual_people.current_position }}</p>
-                                                <p style="color: #6E6E6E;" class="cardDetail">{{ individual_people.contact_no }}</p>
-
-                                            </div>
-
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-
-{#    <div class="col-md-12">#}
+{#    <div class="container" style="margin-top: 1%">#}
+{#            <div class="row">#}
+{#                <h1 style="display: flex; justify-content: center">Alumni List</h1>#}
+{#                {% for i in session_list %}#}
+{#                    <div class="col-md-12">#}
+{#                        {% for session_wise in list_of_people %}#}
+{#                            {% if session_wise.0 == i and session_wise.1 %}#}
+{#                                <h2 style="background: #FFFFFF;padding: 1%"><a style="color: #6E6E6E" href="{% url 'DataRepositoryApp:get-session' session_wise.0 %}">Session: {{ session_wise.0 }}</a></h2>#}
+{#                                {% for individual_people in session_wise.1 %}#}
 {##}
-{#        {% for people in all_people %}#}
-{#            <div class="col-md-4 " style="background: #FFFFFF; padding: 1%; border: 5px solid #eeeeee">#}
-{#                <div >#}
+{#                                    <div class="col-md-4" style="background: #FFFFFF; padding: 1%; border: 5px solid #eeeeee; place-content: center">#}
 {##}
-{#                    <div class="col-md-6">#}
-{#                        {% if people.profile_picture %}#}
-{#                        <img alt="User Pic" src="{{ people.profile_picture.url }}" class="img-circle img-responsive">#}
-{#                        {% else %}#}
-{#                        <img alt="User Pic" src="{% static 'images/nobody_m.original.jpg' %}"#}
-{#                            class="img-circle img-responsive">#}
-{#                        {% endif %}#}
+{##}
+{#                                            <div class="col-md-6">#}
+{#                                                {% if individual_people.profile_picture %}#}
+{#                                                <a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}">#}
+{#                                                    <img style="cursor: pointer" alt="User Pic" src="{{ individual_people.profile_picture.url }}" class="img-responsive">#}
+{#                                                </a>#}
+{#                                                {% else %}#}
+{#                                                <a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}">#}
+{#                                                    <img alt="User Pic" src="{% static 'images/nobody_m.original.jpg' %}" class="img-responsive">#}
+{#                                                </a>#}
+{#                                                {% endif %}#}
+{#                                            </div>#}
+{#                                            <div class="col-md-6">#}
+{##}
+{#                                                <p class="cardDetail"><a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}" style="color: #6E6E6E;" >{{ individual_people.name }}</a></p>#}
+{#                                                <p style="color: #6E6E6E;" class="cardDetail">{{ individual_people.current_position }}</p>#}
+{#                                                <p style="color: #6E6E6E;" class="cardDetail">{{ individual_people.contact_no }}</p>#}
+{##}
+{#                                            </div>#}
+{##}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
 {#                    </div>#}
-{#                    <div class="col-md-6">#}
-{#                        <p class="cardDetail" >{{ people.name }}</p>#}
-{#                        <p class="cardDetail">{{ people.session }}</p>#}
-{#                        <p class="cardDetail">{{ people.contact_no }}</p>#}
-{#                    </div>#}
-{##}
-{#                </div>#}
+{#                {% endfor %}#}
 {#            </div>#}
-{#        {% endfor %}#}
 {#        </div>#}
-{#    </div>#}
-
-{#    <row>#}
-{#      <table class="table col-sm-12 table-responsive table-hover table-bordered w-auto" style="background: #FFFFFF">#}
-{#        <thead style="background: #1d91bd;color: #FFFFFF;">#}
-{#          <tr>#}
-{#            <th>Name</th>#}
-{#            <th>Session</th>#}
-{#            <th>Position</th>#}
-{#            <th>Contact No</th>#}
-{#          </tr>#}
-{#        </thead>#}
-{#        <tbody>#}
-{#          {% for people in all_people %}#}
-{#          <tr>#}
-{#            <td><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}"#}
-{#                style="color: #6E6E6E;">{{ people.name }}</a></td>#}
-{#            <td><a href="{% url 'DataRepositoryApp:get-session' people.session %}"#}
-{#                style="color: #6E6E6E;">{{ people.session }}</a></td>#}
-{#            <td>{{ people.current_position }}</td>#}
-{#            <td><a style="color: #6E6E6E;">{{ people.contact_no }}</a></td>#}
-{#          </tr>#}
-{#          {% endfor %}#}
-{#        </tbody>#}
-{#      </table>#}
-{#    </row>#}
 
 
-    {#        {% for people in all_people %}#}
-    {#        <div class="col-md-4 list-group-item" >#}
-    {#            <h3 class="list-group-item "><b>Name: {{ people.name }}, </b></h3>#}
-    {#            <h3 class="list-group-item">Session: {{ people.session }}, </h3>#}
-    {#            <h3 class="list-group-item">Current position: {{ people.current_position }}, </h3>#}
-    {#            <h3 class="list-group-item">Contact No: {{ people.contact_no }}, </h3>#}
-    {#            <h3 class="list-group-item">Email: {{ people.email }}, </h3>#}
-    {#        </div>#}
-    {##}
-    {#        {% endfor %}#}
-  </div>
 
-  {% endblock %}
+
+
+    <div class="row">
+        <h1 style="display: flex; justify-content: center">Alumni List</h1>
+        {% for session_wise in list_of_people %}
+            {% if session_wise.0 and session_wise.1 %}
+                <div class="col-md-12 col-sm-12">
+                    <h2 style="background: #FFFFFF;padding: 1%"><a style="color: #6E6E6E" href="{% url 'DataRepositoryApp:get-session' session_wise.0 %}">Session: {{ session_wise.0 }}</a></h2>
+                    {% for individual_people in session_wise.1 %}
+
+                        <div class="col-md-4 col-sm-4" style="background: #FFFFFF; padding: 1%; border: 5px solid #eeeeee; place-content: center">
+                            <div class="col-md-6">
+                                {% if individual_people.profile_picture %}
+                                <a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}">
+                                    <img style="cursor: pointer" alt="User Pic" src="{{ individual_people.profile_picture.url }}" class="img-responsive">
+                                </a>
+                                {% else %}
+                                <a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}">
+                                    <img alt="User Pic" src="{% static 'images/nobody_m.original.jpg' %}" class="img-responsive">
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+
+                                <p class="cardDetail"><a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}" style="color: #6E6E6E;" >{{ individual_people.name }}</a></p>
+                                <p style="color: #6E6E6E;" class="cardDetail">{{ individual_people.current_position }}</p>
+                                <p style="color: #6E6E6E;" class="cardDetail">{{ individual_people.contact_no }}</p>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
 
 </body>
 

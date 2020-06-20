@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
   {% load static %}
   <link rel='icon' href="{% static 'images/favicon_logo.png' %}">
 
@@ -37,18 +37,57 @@
 	<script src={% static "js/html5shiv.js" %}></script>
 	<script src={% static "js/respond.min.js" %}></script>
 	<![endif]-->
+
+    <style>
+        .fixed-div{
+                position: fixed;
+                right: 0;
+                left: 0;
+                z-index: 1030;
+                -webkit-transform: translate3d(0,0,0);
+                -o-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+            }
+        @media only screen and (max-width: 767px) {
+            .navbar-inverse .navbar-brand img  {
+                width: 130%;
+                height: 130%;
+                margin-top: -5px;
+            }
+            .navbar-inverse{
+                min-height: 80px;
+                padding: 0;
+            }
+
+        }
+
+        @media (min-width: 768px) {
+            .navbar-inverse .navbar-brand img  {
+                width: 170%;
+                height: 170%;
+                margin-top: -30px;
+            }
+
+
+        }
+    </style>
+
 </head>
 
 <body style="background: #eeeeee">
   <!-- Fixed navbar -->
-  <div class="navbar navbar-inverse">
+  <div class="fixed-div navbar navbar-inverse" style="border-bottom: 5px solid blueviolet;">
     <div class="container">
       <div class="navbar-header">
         <!-- Button for smallest screens -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
-            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        <button type="button" class="toggle-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+{#            <span class="icon-bar"></span>#}
+{#            <span class="icon-bar"></span>#}
+{#            <span class="icon-bar"></span>#}
+            <i class="fa fa-bars" style="font-size: 20pt; padding-right: 5px;padding-left: 5px ; color: white"></i>
+        </button>
         <a class="navbar-brand" href="{% url 'HomeApp:home' %}">
-          <img style="width: 180%;height: 180%; margin-top: -30px" src={% static "images/acce_logo.jpg" %}></a>
+          <img class="logoImage" src={% static "images/acce_logo.jpg" %}></a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right mainNav">
@@ -76,6 +115,7 @@
   </div>
   <!-- /.navbar -->
 
+  <p style="padding-top: 100px"></p>
   {% block body %}
   {% endblock %}
 

@@ -9,7 +9,7 @@ from DataRepositoryApp.models import Alumni
 def get_all_alumni(request):
     list_of_people = []
     session_list = []
-    for i in range(2020, 1972, -1):
+    for i in range(1972, 2040, 1):
         session = str(i)+'-'+str((i+1) % 1000)
         session_list.append(session)
         session_wise = Alumni.objects.filter(session__icontains=str(i))

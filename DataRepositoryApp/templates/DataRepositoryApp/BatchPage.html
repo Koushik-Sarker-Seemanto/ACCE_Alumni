@@ -36,7 +36,7 @@
                             {% endif %}
                         </div>
                         <div class="col-md-6">
-                            <a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;" class="cardDetail" >{{ people.name }}</a>
+                            <p class="cardDetail"><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;" >{{ people.name }}</a></p>
                             <p style="color: #6E6E6E;" class="cardDetail">{{ people.current_position }}</p>
                             <p style="color: #6E6E6E;" class="cardDetail">{{ people.contact_no }}</p>
                         </div>
