@@ -82,7 +82,7 @@
                     <h2 style="background: #FFFFFF;padding: 1%"><a style="color: #6E6E6E" href="{% url 'DataRepositoryApp:get-session' session_wise.0 %}">Session: {{ session_wise.0 }}</a></h2>
                     {% for individual_people in session_wise.1 %}
 
-                        <div class="col-md-4 col-sm-4" style="background: #FFFFFF; padding: 1%; border: 5px solid #eeeeee; place-content: center">
+                        <div class="col-md-4 col-sm-4" style="background: #FFFFFF; padding: 5px;padding-top: 20px;padding-bottom: 20px; border: 5px solid #eeeeee; place-content: center">
                             <div class="col-md-6">
                                 {% if individual_people.profile_picture %}
                                 <a href="{% url 'DataRepositoryApp:get-profile' individual_people.pk %}">
