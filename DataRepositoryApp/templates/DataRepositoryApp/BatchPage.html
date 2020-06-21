@@ -18,12 +18,22 @@
 
       <div class="container">
 
+      <div class="">
+        <div style="display: block; text-align: center">
+            <form style="margin-top: 2%;" class="form-inline" name="search_input_form" action="{% url 'DataRepositoryApp:search-result' %}" method="get">
+                {% csrf_token %}
+                <input name="search_field" style="margin-top: 0;height: 40px;display: inline-block !important; width: 50%!important" id="search_field" class="form-control" type="text" placeholder="Search" required/>
+                <button class="btn btn-primary" style="margin-top: 0; height: 40px;padding-left: 20px;padding-right: 20px;" name="searchbtn" type="submit"><i style="font-size: 12pt" class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
             <div class="col-md-12 col-sm-12">
             <h2 style="display: flex;justify-content: center;background: #FFFFFF;padding: 1%">Session {{ current_session }}</h2>
             {% if all_people.exists %}
 
                 {% for people in all_people %}
-                    <div class="col-md-4 col-sm-4" style="background: #FFFFFF; padding: 5px;padding-top: 20px;padding-bottom: 20px; border: 5px solid #eeeeee">
+                    <div class="col-md-4 col-sm-4 heightFix" style="background: #FFFFFF; padding: 5px;padding-top: 20px;padding-bottom: 20px; border: 5px solid #eeeeee">
                         <div >
 
                             <div class="col-md-6">
@@ -37,10 +47,10 @@
                                 </a>
                                 {% endif %}
                             </div>
-                            <div class="col-md-6">
-                                <p class="cardDetail"><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #6E6E6E;" >{{ people.name }}</a></p>
-                                <p style="color: #6E6E6E;" class="cardDetail">{{ people.current_position }}</p>
-                                <p style="color: #6E6E6E;" class="cardDetail">{{ people.contact_no }}</p>
+                            <div class="col-md-6 heightFixInner">
+                                <p class="cardDetail"><a href="{% url 'DataRepositoryApp:get-profile' people.pk %}" style="color: #414141;" >{{ people.name }}</a></p>
+                                <p style="color: #414141;" class="cardDetail">{{ people.current_position }}</p>
+                                <p style="color: #414141;" class="cardDetail">{{ people.contact_no }}</p>
                             </div>
                         </div>
                     </div>
