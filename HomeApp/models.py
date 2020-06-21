@@ -11,8 +11,8 @@ import sys
 
 
 class Notice(models.Model):
-    title = models.CharField(max_length=100, default='', blank=True)
-    description = models.CharField(max_length=500, default='', blank=True)
+    title = models.CharField(max_length=500, default='', blank=True)
+    description = models.CharField(max_length=5000, default='', blank=True)
     notice_pic = models.ImageField(default='', blank=True, null=True)
     created_at = models.DateTimeField(default=datetime.now)
 
@@ -42,7 +42,7 @@ class Notice(models.Model):
 
 
 class Carousel(models.Model):
-    title = models.CharField(max_length=100, default='', blank=True)
+    title = models.CharField(max_length=500, default='', blank=True)
     carousel_pic = models.ImageField(default='', blank=True, null=True)
     created_at = models.DateTimeField(default=datetime.now)
 
