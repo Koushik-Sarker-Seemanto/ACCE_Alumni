@@ -34,8 +34,11 @@ def get_by_session(request, session):
 
 
 def get_profile_by_id(request, pk):
-    people = Alumni.objects.get(pk=pk)
-
+    try:
+        people = Alumni.objects.get(pk=pk)
+    except Exception as e:
+        print(e)
+        people = None
     context = {
         'people': people
     }

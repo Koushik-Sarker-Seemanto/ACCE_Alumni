@@ -23,6 +23,8 @@
         <div class="container">
             <div class="row">
 
+            {% if people %}
+
                 <div class="panel-body" style="margin-top: 5%">
 
                     <div class="col-md-5 col-xs-12 col-sm-6 col-lg-5">
@@ -51,6 +53,11 @@
                         </div>
                     </div>
                 </div>
+            {% else %}
+                <div class="jumbotron">
+                    <h1 style="text-align: center">Not Found!!!</h1>
+                </div>
+            {% endif %}
             </div>
         </div>
     </div>
