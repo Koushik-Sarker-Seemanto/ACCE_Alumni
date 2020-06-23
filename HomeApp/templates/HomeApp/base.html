@@ -85,6 +85,28 @@
                 overflow: hidden;
             }
         }
+        @media (max-width: 767px) {
+            .about-us{
+                padding-left: 5%;
+                padding-right: 5%;
+                font-size: 14pt;
+                line-height: 24pt
+            }
+            .extra-height{
+                padding-top: 70px;
+            }
+        }
+        @media (min-width: 768px) {
+            .about-us{
+                padding-left: 10%;
+                padding-right: 10%;
+                font-size: 16pt;
+                line-height: 28pt;
+            }
+            .extra-height{
+                padding-top: 90px;
+            }
+        }
 
     </style>
 
@@ -92,7 +114,7 @@
 
 <body style="background: #eeeeee">
   <!-- Fixed navbar -->
-  <div class="fixed-div navbar navbar-inverse" style="border-bottom: 5px solid blueviolet;">
+  <div class="fixed-div navbar navbar-inverse" style="border-bottom: 5px solid #ffe6c2; background: #ffe6c2">
     <div class="container">
       <div class="navbar-header">
         <!-- Button for smallest screens -->
@@ -100,16 +122,16 @@
             <i class="fa fa-bars" style="font-size: 20pt; padding-right: 5px;padding-left: 5px ; color: white"></i>
         </button>
         <a class="navbar-brand" href="{% url 'HomeApp:home' %}">
-          <img class="logoImage" src={% static "images/acce_logo.jpg" %}></a>
+          <img class="logoImage" src={% static "images/logo-bg.png" %}></a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right mainNav">
-          <li><a href="{% url 'HomeApp:home' %}">Home</a></li>
-            <li><a href="{% url 'HomeApp:events' %}">Events</a></li>
-          <li><a href="{% url 'DataRepositoryApp:get-alumni' %}">Alumni</a></li>
-            <li><a href="{% url 'HomeApp:gallery-view' %}">Gallery</a></li>
-          <li><a href="{% url 'HomeApp:aboutus-view' %}">About</a></li>
-          <li><a href="{% url 'HomeApp:contact-view' %}">Contact</a></li>
+          <li><a style="color: #373737;" href="{% url 'HomeApp:home' %}">Home</a></li>
+            <li><a style="color: #373737;" href="{% url 'HomeApp:events' %}">Events</a></li>
+          <li><a style="color: #373737;" href="{% url 'DataRepositoryApp:get-alumni' %}">Alumni</a></li>
+            <li><a style="color: #373737;" href="{% url 'HomeApp:gallery-view' %}">Gallery</a></li>
+          <li><a style="color: #373737;" href="{% url 'HomeApp:aboutus-view' %}">About</a></li>
+          <li><a style="color: #373737;" href="{% url 'HomeApp:contact-view' %}">Contact</a></li>
 
         </ul>
       </div>
@@ -118,7 +140,7 @@
   </div>
   <!-- /.navbar -->
 
-  <p style="padding-top: 100px"></p>
+  <p class="extra-height" ></p>
   {% block body %}
   {% endblock %}
 
@@ -212,28 +234,22 @@
           <div class="col-md-12 col-sm-12" style="text-align: center">
             <div class="footerwidget">
               <h4>Contact</h4>
-              <p>Lorem reksi this dummy text unde omnis iste natus error sit volupum</p>
               <div class="contact-info">
-                <i class="fa fa-map-marker"></i> Kerniles 416 - United Kingdom<br>
-                <i class="fa fa-phone"></i>+00 123 156 711 <br>
-                <i class="fa fa-envelope-o"></i> youremail@email.com
+                <i class="fa fa-map-marker"></i> Department of Applied Chemistry <br>& Chemical Technology - DU<br>
+                <i class="fa fa-phone"></i>Temporary Unavailable <br>
+                <a style="color: #414141" href="mailto:crystal.acce@hotmail.com"><i class="fa fa-envelope"></i> crystal.acce@hotmail.com </a> <br>
+                <a style="color: #414141" href="https://www.facebook.com/Crystal-100100281763858/?modal=admin_todo_tour"><i class="fa fa-facebook-square"></i> Crystal</a>
               </div>
             </div><!-- end widget -->
           </div>
         </div>
       </div>
-      <div class="social text-center">
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-dribbble"></i></a>
-        <a href="#"><i class="fa fa-flickr"></i></a>
-        <a href="#"><i class="fa fa-github"></i></a>
-      </div>
+{#      <div class="social text-center">#}
 
       <div class="clear"></div>
       <!--CLEAR FLOATS-->
     </div>
-    <div class="footer2">
+    <div class="footer2" style="margin-top: 2%">
       <div class="container">
         <div class="row">
 
