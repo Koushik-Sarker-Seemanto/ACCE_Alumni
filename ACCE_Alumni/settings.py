@@ -87,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'acce_alumni',
-        'USER': 'root',
+        'USER': 'acce',
         'PASSWORD': '4200',
         'HOST': '127.0.0.1',
         'PORT': '3306',
